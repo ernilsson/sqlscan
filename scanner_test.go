@@ -26,6 +26,10 @@ func (s *scannable) Columns() ([]string, error) {
 	return s.columns()
 }
 
+func (s *scannable) Next() bool {
+	return true
+}
+
 func scanOk(expected int, t *testing.T) func(dest ...any) error {
 	return func(dest ...any) error {
 		if len(dest[0].([]any)) != expected {

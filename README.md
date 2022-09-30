@@ -61,7 +61,7 @@ func get(db *sql.DB) {
         return
     }   
     scanner := sqlscan.New(rows)
-    for rows.Next() {
+    for scanner.Next() {
         var e Entity
         err = scanner.Scan(&e)
         if err != nil {

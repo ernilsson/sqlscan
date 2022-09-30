@@ -5,11 +5,13 @@ import (
 )
 
 type Scanner interface {
+	Next() bool
 	Scan(v any) error
 }
 
 type Scannable interface {
 	Scan(dest ...any) error
+	Next() bool
 	Columns() ([]string, error)
 }
 
@@ -21,6 +23,10 @@ func New(src Scannable) Scanner {
 	return StructScanner{
 		src: src,
 	}
+}
+
+func (s StructScanner) Next() bool {
+	return s.src.Next()
 }
 
 func (s StructScanner) Scan(v any) error {
