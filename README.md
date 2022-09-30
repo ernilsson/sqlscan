@@ -50,24 +50,24 @@ import (
 )
 
 type Entity struct {
-	ID   int    `sql:"id"`
-	Name string `sql:"name"`
+    ID   int    `sql:"id"`
+    Name string `sql:"name"`
 }
 
 func get(db *sql.DB) {
-	rows, err := db.Query("SELECT id, name FROM entity")
-	if err != nil {
-	    // Handle error
-		return
+    rows, err := db.Query("SELECT id, name FROM entity")
+    if err != nil {
+        // Handle error
+        return
     }   
-	scanner := sqlscan.New(rows)
-	for rows.Next() {
-		var e Entity
-		err = scanner.Scan(&e)
-		if err != nil {
-			// Handle error
-        }   
-		fmt.Printf("Scanned: %+v\n", e)
+    scanner := sqlscan.New(rows)
+    for rows.Next() {
+        var e Entity
+        err = scanner.Scan(&e)
+        if err != nil {
+            // Handle error 
+        }
+        fmt.Printf("Scanned: %+v\n", e)
     }   
 }
 ```
