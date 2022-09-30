@@ -73,5 +73,5 @@ func get(db *sql.DB) {
 ```
 
 The library does not work directly towards the `*sql.Rows` implementation but rather an internal interface which is 
-implemented by the row struct. This makes it somewhat simpler to test, although test-trust is somewhat decreased. The 
-scannable interface has a mock for internal use in the test file.
+implemented by the row struct. This makes it somewhat simpler to test, although I would say that test-trust is
+decreased. The scannable interface has a mock for internal use in the test file.
